@@ -1,0 +1,13 @@
+C:\Users\lubo\Desktop\LPlayer\LPlayer\bin\Debug\LPlayer.exe.config
+C:\Users\lubo\Desktop\LPlayer\LPlayer\bin\Debug\LPlayer.exe
+C:\Users\lubo\Desktop\LPlayer\LPlayer\bin\Debug\LPlayer.pdb
+C:\Users\lubo\Desktop\LPlayer\LPlayer\bin\Debug\Microsoft.DirectX.AudioVideoPlayback.dll
+C:\Users\lubo\Desktop\LPlayer\LPlayer\bin\Debug\Microsoft.DirectX.dll
+C:\Users\lubo\Desktop\LPlayer\LPlayer\bin\Debug\Microsoft.DirectX.Direct3D.dll
+C:\Users\lubo\Desktop\LPlayer\LPlayer\bin\Debug\Microsoft.DirectX.Direct3D.xml
+C:\Users\lubo\Desktop\LPlayer\LPlayer\obj\Debug\LPlayer.csprojResolveAssemblyReference.cache
+C:\Users\lubo\Desktop\LPlayer\LPlayer\obj\Debug\LPlayer.Form1.resources
+C:\Users\lubo\Desktop\LPlayer\LPlayer\obj\Debug\LPlayer.Properties.Resources.resources
+C:\Users\lubo\Desktop\LPlayer\LPlayer\obj\Debug\LPlayer.csproj.GenerateResource.Cache
+C:\Users\lubo\Desktop\LPlayer\LPlayer\obj\Debug\LPlayer.exe
+C:\Users\lubo\Desktop\LPlayer\LPlayer\obj\Debug\LPlayer.pdb
