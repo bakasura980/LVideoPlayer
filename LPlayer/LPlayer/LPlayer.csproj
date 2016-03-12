@@ -61,11 +61,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrintTime.cs" />
+    <Compile Include="ScrollSubtitles.cs" />
+    <Compile Include="VideoTime.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Subs.cs" />
-    <Compile Include="SubsPropert.cs" />
+    <Compile Include="Subtitles.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

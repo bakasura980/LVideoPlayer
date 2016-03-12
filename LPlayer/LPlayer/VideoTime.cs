@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace LPlayer
 {
-    class PrintTime
+    class VideoTime
     {
-        public string PrintTimeVideo(int sec, int min, int hour)
+
+        public string PrintTime(int sec, int min, int hour)
         {
             string Timer = string.Empty;
             if (sec < 10 && min < 10 && hour < 10)
