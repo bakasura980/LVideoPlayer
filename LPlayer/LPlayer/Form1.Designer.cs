@@ -40,6 +40,7 @@
             this.SubsLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // OpenDialog
@@ -134,10 +135,20 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(27, 64);
+            this.panel1.Location = new System.Drawing.Point(12, 102);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(363, 209);
+            this.panel1.Size = new System.Drawing.Size(378, 209);
             this.panel1.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(142, 41);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 30);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "PlayList";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -145,6 +156,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(407, 358);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.TimerTxt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SubsLabel);
@@ -175,6 +187,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Label TimerTxt;
+        private System.Windows.Forms.Button button1;
     }
 }
 

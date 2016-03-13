@@ -22,7 +22,7 @@ namespace LPlayer
         }
         private int position = 0;
         private Video video;
-
+        //Make it for music formats , not only for video formats
         private void OpenDialog_Click(object sender, EventArgs e)
         {
             var opend = new OpenFileDialog();
@@ -80,6 +80,20 @@ namespace LPlayer
         }
 
         private VideoTime videotime = new VideoTime();
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if ((Application.OpenForms["PlayList"] as PlayList) != null)
+            {
+                MessageBox.Show("This Form is already opened");
+            }
+            else
+            {
+                PlayList playlistform = new PlayList();
+                playlistform.Show();
+            }
+        }
+
         private Subtitles subtitle = new Subtitles();
         private void timer2_Tick(object sender, EventArgs e)
         {

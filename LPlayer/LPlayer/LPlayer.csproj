@@ -61,6 +61,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayList.Designer.cs">
+      <DependentUpon>PlayList.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScrollSubtitles.cs" />
     <Compile Include="VideoTime.cs" />
     <Compile Include="Program.cs" />
@@ -68,6 +74,9 @@
     <Compile Include="Subtitles.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlayList.resx">
+      <DependentUpon>PlayList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
