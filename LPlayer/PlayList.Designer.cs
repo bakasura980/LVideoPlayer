@@ -29,22 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayList));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Listbox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.Listbox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 34);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(347, 207);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Your Playlist";
             // 
             // label1
             // 
@@ -55,20 +46,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Drag and Drop your items or choose a folder with files";
             // 
-            // Listbox1
-            // 
-            this.Listbox1.AllowDrop = true;
-            this.Listbox1.BackColor = System.Drawing.SystemColors.Control;
-            this.Listbox1.FormattingEnabled = true;
-            this.Listbox1.ItemHeight = 16;
-            this.Listbox1.Location = new System.Drawing.Point(0, 22);
-            this.Listbox1.Name = "Listbox1";
-            this.Listbox1.Size = new System.Drawing.Size(347, 180);
-            this.Listbox1.TabIndex = 0;
-            this.Listbox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.Listbox1_DragDrop);
-            this.Listbox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.Listbox1_DragEnter);
-            this.Listbox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Listbox1_MouseDown);
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(113, 247);
@@ -77,15 +54,47 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Ready";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Location = new System.Drawing.Point(366, 56);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(32, 185);
+            this.panel1.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panel2);
+            this.groupBox1.Location = new System.Drawing.Point(12, 56);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(347, 185);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Your Playlist";
+            // 
+            // panel2
+            // 
+            this.panel2.AllowDrop = true;
+            this.panel2.AutoScroll = true;
+            this.panel2.Location = new System.Drawing.Point(7, 22);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(340, 163);
+            this.panel2.TabIndex = 0;
+            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.Listbox1_DragDrop);
+            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.Listbox1_DragEnter);
+            this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             // 
             // PlayList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 287);
+            this.ClientSize = new System.Drawing.Size(410, 287);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PlayList";
             this.Text = "PlayList";
@@ -96,10 +105,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox Listbox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

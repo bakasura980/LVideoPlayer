@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Input.Manipulations" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,17 +56,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainControl.cs" />
     <Compile Include="PlayList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PlayList.Designer.cs">
       <DependentUpon>PlayList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScrollBar.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScrollSubtitles.cs" />
     <Compile Include="VideoTime.cs" />
