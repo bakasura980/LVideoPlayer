@@ -1,0 +1,133 @@
+﻿<Window x:Class="LPlayerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+        Closing="MainWindow_OnClosing"
+        WindowState="Normal"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="425">
+    <Grid>
+        <TabControl TabStripPlacement="Top" Margin="0,0,0,0" MouseMove="UIElement_OnMouseMove">
+            <TabItem Name="MainTab"  Header="Video Player">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.7*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.7*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="9*" />
+                        <RowDefinition Height="85*"/>
+                        <RowDefinition Height="12*"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid RowSpan="1" Visibility="Hidden" ></Grid>
+                    
+                        
+                     
+                    <!--Row 1 need--> 
+                        <MediaElement x:Name="Video"
+                                      UnloadedBehavior="Stop"
+                                      LoadedBehavior="Manual"
+                                      Stretch="Fill"
+                                      Grid.Column="0" Grid.ColumnSpan="8"  
+                                      Grid.Row="0"    Grid.RowSpan="3" 
+                                      Source='C:\Users\Bobo-PC\Desktop\GOT_Best_Scene.mp4'>
+                        </MediaElement>
+                    <!--Row 0 -->
+                        <Button x:Name="Home" Grid.Row="0" Grid.Column="0" Content="🏰" Click="Home_OnClick"/>
+                        <Button x:Name="SubsShortcut" Grid.Row="0" Grid.Column="1" Content="Subs" Click="SubsShortcut_OnClick"/>
+                        <Button x:Name="none" Grid.Row="0" Grid.Column="2" Content=""/>
+                        <Button x:Name="none1" Grid.Row="0" Grid.Column="3" Content=""/>
+                        <Button x:Name="none2" Grid.Row="0" Grid.Column="4" Content=""/>
+                        <Button x:Name="SavePhoto" Grid.Row="0" Grid.Column="5" Content="💾"  FontSize="17"/>
+                        <Button x:Name="ChgTheme" Grid.Row="0" Grid.Column="6" Content="👀" Click="ChangeTheme_OnClick" FontWeight="Bold" FontSize="17"/>
+                        <Button x:Name="PlayList" Grid.Row="0" Grid.Column="7" Content="Playlist" Click="PlayList_OnClick"/>
+                    <!--Row 2-->
+                        <Button x:Name="MenuShow" Grid.Row="2" Grid.Column="0" Content="Show"  Click="MenuShow_OnClick"/>
+                        <Button x:Name="None5"    Grid.Row="2" Grid.Column="1" Content=""      Click="Pause_OnClick"/>
+                        <Button x:Name="StepBack" Grid.Row="2" Grid.Column="2" Content="⏮"     Click="StepBack_OnClick"/>
+                        <Button x:Name="Start"    Grid.Row="2" Grid.Column="3" Content="➤"     Click="Start_OnClick"/>
+                        <Button x:Name="StepOver" Grid.Row="2" Grid.Column="4" Content="⏭"     Click="StepOver_OnClick"/>
+                        <Button x:Name="ForwStop" Grid.Row="2" Grid.Column="5" Content="❎"     Click="ForwStop_OnClick"/>
+                        <Button x:Name="none4"    Grid.Row="2" Grid.Column="7" />
+                        <Button x:Name="Mute"     Grid.Row="2" Grid.Column="6" Content="📣"     Click="Mute_OnClick" FontSize="22"/>
+                </Grid>
+            
+            </TabItem>
+
+            <TabItem x:Name="PlayListTab" 
+                         Header="PlayList">
+                <Grid>
+                    
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="VideoSubsOptionsTab" Header="VideoAndSubsOptions" Height="22" VerticalAlignment="Bottom">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <!--<ColumnDefinition Width="*"/>-->
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Grid.Row="1"
+                         Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="OpenVideoLabel" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Open Video at:"/>
+                    </Grid>
+                    
+                    <Grid Grid.Row="1"
+                         Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="OpenVideo" Grid.Column="0" Grid.Row="0" Content="Open Video" Click="Open_Video_OnClick"></Button>
+                    </Grid>
+               </Grid>
+                <!--<Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    --><!--Row 0--><!--
+                    <TextBlock x:Name="TextBlock1" Text="" Grid.Row="0" Grid.Column="0">
+                    </TextBlock>
+                    <TextBlock x:Name="TextBlock2" Grid.Row="0" Grid.Column="1"  />
+                    --><!--Row 1--><!--
+                    <TextBlock x:Name="TextBlock3" Grid.Row="1" Grid.Column="0" />
+                    <TextBlock x:Name="TextBlock4" Grid.Row="1" Grid.Column="1"  />
+                </Grid>-->
+                
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>

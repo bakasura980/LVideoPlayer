@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:LPlayerWPF">
+
+    <Style TargetType="Grid">
+        <Setter Property="Background" Value="Indigo"/>
+    </Style>
+    
+    <Style TargetType="Button">
+            <Setter Property="Background" Value="DeepSkyBlue"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="11"/>
+            
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="BorderBrush" Value="Goldenrod"/>
+    </Style>
+
+    <Style TargetType="MediaElement">
+
+        <!--<Setter Property="Source" Value=""/>-->
+
+
+    </Style>
+    
+    <Style TargetType="TabItem">
+        <Setter Property="Background" Value="DarkTurquoise"/>
+    </Style>
+
+</ResourceDictionary>
