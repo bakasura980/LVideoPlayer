@@ -14,3 +14,17 @@ C:\Users\lubo\Desktop\LPlayer\LPlayer\bin\Debug\Microsoft.DirectX.xml
 C:\Users\lubo\Desktop\LPlayer\LPlayer\bin\Debug\Microsoft.DirectX.AudioVideoPlayback.xml
 C:\Users\lubo\Desktop\LPlayer\LPlayer\obj\Debug\LPlayer.PlayList.resources
 C:\Users\lubo\Desktop\LPlayer\LPlayer\obj\Debug\LPlayer.csprojResolveAssemblyReference.cache
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\bin\Debug\LPlayer.exe.config
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\obj\Debug\LPlayer.exe
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\obj\Debug\LPlayer.pdb
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\bin\Debug\LPlayer.exe
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\bin\Debug\LPlayer.pdb
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\bin\Debug\Microsoft.DirectX.Direct3D.dll
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\bin\Debug\Microsoft.DirectX.xml
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\bin\Debug\Microsoft.DirectX.AudioVideoPlayback.xml
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\bin\Debug\Microsoft.DirectX.Direct3D.xml
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\obj\Debug\LPlayer.csprojResolveAssemblyReference.cache
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\obj\Debug\LPlayer.Form1.resources
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\obj\Debug\LPlayer.PlayList.resources
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\obj\Debug\LPlayer.Properties.Resources.resources
+C:\Users\Bobo-PC\Source\Repos\LVideoPlayer\LPlayer\obj\Debug\LPlayer.csproj.GenerateResource.Cache
