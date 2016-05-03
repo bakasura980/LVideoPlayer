@@ -24,42 +24,73 @@
                     </Grid.ColumnDefinitions>
                     
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="9*" />
+                        <RowDefinition Height="18*" />
+                        <RowDefinition Height="14*"/>
                         <RowDefinition Height="85*"/>
+                        <RowDefinition Height="33*"/>
+                        <RowDefinition Height="13*"/>
                         <RowDefinition Height="12*"/>
+                        <RowDefinition Height="19*"/>
 
                     </Grid.RowDefinitions>
-                    <Grid RowSpan="1" Visibility="Hidden" ></Grid>
-                    
-                        
-                     
-                    <!--Row 1 need--> 
+                   
+                    <!-- All Rows-->
                         <MediaElement x:Name="Video"
                                       UnloadedBehavior="Stop"
                                       LoadedBehavior="Manual"
                                       Stretch="Fill"
+                                      AllowDrop="True"
                                       Grid.Column="0" Grid.ColumnSpan="8"  
-                                      Grid.Row="0"    Grid.RowSpan="3" 
+                                      Grid.Row="0"    Grid.RowSpan="6"
                                       Source='C:\Users\Bobo-PC\Desktop\GOT_Best_Scene.mp4'>
-                        </MediaElement>
+                       </MediaElement>
+                    <!--Source='C:\Users\Bobo-PC\Downloads\MahmutOrhan-Feelfeat.SenaSener(Official Video).mp3'-->
+                    <!--Source='C:\Users\Bobo-PC\Desktop\GOT_Best_Scene.mp4'-->
                     <!--Row 0 -->
-                        <Button x:Name="Home" Grid.Row="0" Grid.Column="0" Content="🏰" Click="Home_OnClick"/>
-                        <Button x:Name="SubsShortcut" Grid.Row="0" Grid.Column="1" Content="Subs" Click="SubsShortcut_OnClick"/>
-                        <Button x:Name="none" Grid.Row="0" Grid.Column="2" Content=""/>
-                        <Button x:Name="none1" Grid.Row="0" Grid.Column="3" Content=""/>
-                        <Button x:Name="none2" Grid.Row="0" Grid.Column="4" Content=""/>
-                        <Button x:Name="SavePhoto" Grid.Row="0" Grid.Column="5" Content="💾"  FontSize="17"/>
-                        <Button x:Name="ChgTheme" Grid.Row="0" Grid.Column="6" Content="👀" Click="ChangeTheme_OnClick" FontWeight="Bold" FontSize="17"/>
+                        <Button x:Name="Home"     Grid.Row="0" Grid.Column="0" Content="🏰"       Click="Home_OnClick"/>
+                        <Button x:Name="SubSrtct" Grid.Row="0" Grid.Column="1" Content="Subs"     Click="SubsShortcut_OnClick"/>
+                        <Button x:Name="none"     Grid.Row="0" Grid.Column="2" Content=""/>
+                        <Button x:Name="none1"    Grid.Row="0" Grid.Column="3" Content=""/>
+                        <Button x:Name="none2"    Grid.Row="0" Grid.Column="4" Content=""/>
+                        <Button x:Name="SavePhot" Grid.Row="0" Grid.Column="5" Content="💾"  FontSize="17"/>
+                        <Button x:Name="ChgTheme" Grid.Row="0" Grid.Column="6" Content="👀"       Click="ChangeTheme_OnClick" FontWeight="Bold" FontSize="17"/>
                         <Button x:Name="PlayList" Grid.Row="0" Grid.Column="7" Content="Playlist" Click="PlayList_OnClick"/>
-                    <!--Row 2-->
-                        <Button x:Name="MenuShow" Grid.Row="2" Grid.Column="0" Content="Show"  Click="MenuShow_OnClick"/>
-                        <Button x:Name="None5"    Grid.Row="2" Grid.Column="1" Content=""      Click="Pause_OnClick"/>
-                        <Button x:Name="StepBack" Grid.Row="2" Grid.Column="2" Content="⏮"     Click="StepBack_OnClick"/>
-                        <Button x:Name="Start"    Grid.Row="2" Grid.Column="3" Content="➤"     Click="Start_OnClick"/>
-                        <Button x:Name="StepOver" Grid.Row="2" Grid.Column="4" Content="⏭"     Click="StepOver_OnClick"/>
-                        <Button x:Name="ForwStop" Grid.Row="2" Grid.Column="5" Content="❎"     Click="ForwStop_OnClick"/>
-                        <Button x:Name="none4"    Grid.Row="2" Grid.Column="7" />
-                        <Button x:Name="Mute"     Grid.Row="2" Grid.Column="6" Content="📣"     Click="Mute_OnClick" FontSize="22"/>
+                    <!--Row 1-->
+                        
+                        <TextBlock x:Name="NotificationBlock"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="8"
+                            Background="Transparent"
+                            Foreground ="AliceBlue"
+                            TextAlignment ="Center"
+                            FontSize ="17"
+                            TextWrapping="Wrap">
+                        </TextBlock>
+                    <!--Row 3 and Row 4 -->
+                    
+                        <TextBlock x:Name="Subtitles" 
+                               Grid.Column="1" Grid.ColumnSpan="6"
+                               Grid.Row="3" Grid.RowSpan="2"
+                               Text=""
+                               TextAlignment="Center"
+                               Foreground ="White"
+                               TextWrapping="Wrap"
+                               FontSize="21"
+                               Background="Transparent">
+                        </TextBlock>
+                    
+                    <!--Row 5-->
+                        <!--soon navigator--> 
+                    <!--Row 6-->
+                        
+                        <Button x:Name="MenuShow" Grid.Row="6" Grid.Column="0" Content="Show"     Click="MenuShow_OnClick"/>
+                        <Button x:Name="None5"    Grid.Row="6" Grid.Column="1" Content=""         Click="Pause_OnClick"/>
+                        <Button x:Name="StepBack" Grid.Row="6" Grid.Column="2" Content="⏮"       Click="StepBack_OnClick"/>
+                        <Button x:Name="Start"    Grid.Row="6" Grid.Column="3" Content="➤"       Click="Start_OnClick"/>
+                        <Button x:Name="StepOver" Grid.Row="6" Grid.Column="4" Content="⏭"       Click="StepOver_OnClick"/>
+                        <Button x:Name="ForwStop" Grid.Row="6" Grid.Column="5" Content="❎"       Click="ForwStop_OnClick"/>
+                        <Button x:Name="none4"    Grid.Row="6" Grid.Column="7" Content=""         Click="None4_OnClick"/>
+                        <Button x:Name="Mute"     Grid.Row="6" Grid.Column="6" Content="📣"       Click="Mute_OnClick" FontSize="22"/>
                 </Grid>
             
             </TabItem>

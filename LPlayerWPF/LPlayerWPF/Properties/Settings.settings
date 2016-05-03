@@ -5,8 +5,8 @@
     <Setting Name="currentMovie" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\\Users\\Bobo-PC\\DesktopGOT_Best_Scene.mp4</Value>
     </Setting>
-    <Setting Name="currentTheme" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+    <Setting Name="settingsCurrentTheme" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Setting" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
