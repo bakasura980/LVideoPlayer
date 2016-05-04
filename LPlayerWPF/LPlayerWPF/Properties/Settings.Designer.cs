@@ -37,13 +37,13 @@ namespace LPlayerWPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public int currentTheme {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int settingsCurrentTheme {
             get {
-                return ((int)(this["currentTheme"]));
+                return ((int)(this["settingsCurrentTheme"]));
             }
             set {
-                this["currentTheme"] = value;
+                this["settingsCurrentTheme"] = value;
             }
         }
         
