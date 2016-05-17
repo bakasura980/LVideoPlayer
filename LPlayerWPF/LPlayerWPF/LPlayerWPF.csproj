@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>HeaderIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Burrow, Version=1.0.31.0, Culture=neutral, PublicKeyToken=852733f6fa7b863c, processorArchitecture=MSIL">
       <HintPath>..\packages\Burrow.NET.1.0.32\lib\net45\Burrow.dll</HintPath>
@@ -69,6 +72,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Web.DataVisualization">
       <HintPath>..\packages\DbNetSuite.4.4.5910\lib\net40\System.Web.DataVisualization.dll</HintPath>
       <Private>True</Private>
@@ -92,6 +96,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ScrollSubtitles.cs" />
+    <Compile Include="Subtitles.cs" />
+    <Compile Include="VideoTime.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +107,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ExceptionsContainer.cs" />
+    <Compile Include="MaintainFormats.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -118,6 +127,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlayList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlayList.Designer.cs">
+      <DependentUpon>PlayList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlayListVideosList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -131,6 +147,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="PlayList.resx">
+      <DependentUpon>PlayList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -145,7 +164,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="HeaderIcon.ico" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>

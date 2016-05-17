@@ -3,14 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-
         Closing="MainWindow_OnClosing"
         WindowState="Normal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="425">
+        Title="MainWindow" Height="350" Width="425" Icon="HeaderIcon.ico" Loaded="Window_Loaded">
     <Grid>
-        <TabControl TabStripPlacement="Top" Margin="0,0,0,0" MouseMove="UIElement_OnMouseMove">
-            <TabItem Name="MainTab"  Header="Video Player">
+        <TabControl TabStripPlacement="Top" Margin="0,0,-0.333,0.333" MouseMove="UIElement_OnMouseMove">
+            <TabItem Name="MainTab"  Header="Video Player" Margin="-3,-1,-0.667,-2.333">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1.7*"/>
@@ -22,7 +21,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="1.7*"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="18*" />
                         <RowDefinition Height="14*"/>
@@ -33,42 +32,40 @@
                         <RowDefinition Height="19*"/>
 
                     </Grid.RowDefinitions>
-                   
+
                     <!-- All Rows-->
-                        <MediaElement x:Name="Video"
+                    <MediaElement x:Name="Video"
                                       UnloadedBehavior="Stop"
                                       LoadedBehavior="Manual"
                                       Stretch="Fill"
                                       AllowDrop="True"
-                                      Grid.Column="0" Grid.ColumnSpan="8"  
-                                      Grid.Row="0"    Grid.RowSpan="6"
-                                      Source='C:\Users\Bobo-PC\Desktop\GOT_Best_Scene.mp4'>
-                       </MediaElement>
+                                      Grid.Column="0" Grid.ColumnSpan="8"    Grid.RowSpan="7"
+                                      Source='C:\Users\Bobo-PC\Desktop\GOT_Best_Scene.mp4' Margin="0,0,-0.333,0"/>
                     <!--Source='C:\Users\Bobo-PC\Downloads\MahmutOrhan-Feelfeat.SenaSener(Official Video).mp3'-->
                     <!--Source='C:\Users\Bobo-PC\Desktop\GOT_Best_Scene.mp4'-->
                     <!--Row 0 -->
-                        <Button x:Name="Home"     Grid.Row="0" Grid.Column="0" Content="🏰"       Click="Home_OnClick"/>
-                        <Button x:Name="SubSrtct" Grid.Row="0" Grid.Column="1" Content="Subs"     Click="SubsShortcut_OnClick"/>
-                        <Button x:Name="none"     Grid.Row="0" Grid.Column="2" Content=""/>
-                        <Button x:Name="none1"    Grid.Row="0" Grid.Column="3" Content=""/>
-                        <Button x:Name="none2"    Grid.Row="0" Grid.Column="4" Content=""/>
-                        <Button x:Name="SavePhot" Grid.Row="0" Grid.Column="5" Content="💾"  FontSize="17"/>
-                        <Button x:Name="ChgTheme" Grid.Row="0" Grid.Column="6" Content="👀"       Click="ChangeTheme_OnClick" FontWeight="Bold" FontSize="17"/>
-                        <Button x:Name="PlayList" Grid.Row="0" Grid.Column="7" Content="Playlist" Click="PlayList_OnClick"/>
+                    <Button x:Name="Home"     Grid.Row="0" Grid.Column="0" Content="🏰"       Click="Home_OnClick"/>
+                    <Button x:Name="SubSrtct" Grid.Row="0" Grid.Column="1" Content="Subs"     Click="SubsShortcut_OnClick"/>
+                    <Button x:Name="OpenBtn"     Grid.Row="0" Grid.Column="2" Content="Open" Click="OpenBtn_Click"/>
+                    <Button x:Name="none1"    Grid.Row="0" Grid.Column="3" Content=""/>
+                    <Button x:Name="none2"    Grid.Row="0" Grid.Column="4" Content=""/>
+                    <Button x:Name="SavePhot" Grid.Row="0" Grid.Column="5" Content="💾"  FontSize="17"/>
+                    <Button x:Name="ChgTheme" Grid.Row="0" Grid.Column="6" Content="👀"       Click="ChangeTheme_OnClick" FontWeight="Bold" FontSize="17"/>
+                    <Button x:Name="PlayList" Grid.Row="0" Grid.Column="7" Content="Playlist" Click="PlayList_OnClick" Height="27" Margin="0.333,0,-0.333,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
                     <!--Row 1-->
-                        
-                        <TextBlock x:Name="NotificationBlock"
+
+                    <TextBlock x:Name="NotificationBlock"
                             Grid.Row="1"
                             Grid.ColumnSpan="8"
                             Background="Transparent"
                             Foreground ="AliceBlue"
                             TextAlignment ="Center"
                             FontSize ="17"
-                            TextWrapping="Wrap">
-                        </TextBlock>
+                            TextWrapping="Wrap" Grid.RowSpan="2">
+                    </TextBlock>
                     <!--Row 3 and Row 4 -->
-                    
-                        <TextBlock x:Name="Subtitles" 
+
+                    <TextBlock x:Name="SubtitlesText" 
                                Grid.Column="1" Grid.ColumnSpan="6"
                                Grid.Row="3" Grid.RowSpan="2"
                                Text=""
@@ -77,86 +74,29 @@
                                TextWrapping="Wrap"
                                FontSize="21"
                                Background="Transparent">
-                        </TextBlock>
-                    
-                    <!--Row 5-->
-                        <!--soon navigator--> 
-                    <!--Row 6-->
-                        
-                        <Button x:Name="MenuShow" Grid.Row="6" Grid.Column="0" Content="Show"     Click="MenuShow_OnClick"/>
-                        <Button x:Name="None5"    Grid.Row="6" Grid.Column="1" Content=""         Click="Pause_OnClick"/>
-                        <Button x:Name="StepBack" Grid.Row="6" Grid.Column="2" Content="⏮"       Click="StepBack_OnClick"/>
-                        <Button x:Name="Start"    Grid.Row="6" Grid.Column="3" Content="➤"       Click="Start_OnClick"/>
-                        <Button x:Name="StepOver" Grid.Row="6" Grid.Column="4" Content="⏭"       Click="StepOver_OnClick"/>
-                        <Button x:Name="ForwStop" Grid.Row="6" Grid.Column="5" Content="❎"       Click="ForwStop_OnClick"/>
-                        <Button x:Name="none4"    Grid.Row="6" Grid.Column="7" Content=""         Click="None4_OnClick"/>
-                        <Button x:Name="Mute"     Grid.Row="6" Grid.Column="6" Content="📣"       Click="Mute_OnClick" FontSize="22"/>
-                </Grid>
-            
-            </TabItem>
-
-            <TabItem x:Name="PlayListTab" 
-                         Header="PlayList">
-                <Grid>
-                    
-                </Grid>
-            </TabItem>
-
-            <TabItem x:Name="VideoSubsOptionsTab" Header="VideoAndSubsOptions" Height="22" VerticalAlignment="Bottom">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <!--<ColumnDefinition Width="*"/>-->
-                    </Grid.ColumnDefinitions>
-                    
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="8*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    
-                    <Grid Grid.Row="1"
-                         Grid.Column="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Label x:Name="OpenVideoLabel" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Open Video at:"/>
-                    </Grid>
-                    
-                    <Grid Grid.Row="1"
-                         Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Button x:Name="OpenVideo" Grid.Column="0" Grid.Row="0" Content="Open Video" Click="Open_Video_OnClick"></Button>
-                    </Grid>
-               </Grid>
-                <!--<Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    --><!--Row 0--><!--
-                    <TextBlock x:Name="TextBlock1" Text="" Grid.Row="0" Grid.Column="0">
                     </TextBlock>
-                    <TextBlock x:Name="TextBlock2" Grid.Row="0" Grid.Column="1"  />
-                    --><!--Row 1--><!--
-                    <TextBlock x:Name="TextBlock3" Grid.Row="1" Grid.Column="0" />
-                    <TextBlock x:Name="TextBlock4" Grid.Row="1" Grid.Column="1"  />
-                </Grid>-->
-                
+
+                    <!--Row 5-->
+                    <!--soon navigator-->
+                    <!--Row 6-->
+
+                    <Button x:Name="MenuShow" Grid.Row="6" Grid.Column="0" Content="Show"     Click="MenuShow_OnClick"/>
+                    <Button x:Name="None5"    Grid.Row="6" Grid.Column="1" Content=""         Click="Pause_OnClick"/>
+                    <Button x:Name="StepBack" Grid.Row="6" Grid.Column="2" Content="⏮"       Click="StepBack_OnClick"/>
+                    <Button x:Name="Start"    Grid.Row="6" Grid.Column="3" Content="➤"       Click="Start_OnClick"/>
+                    <Button x:Name="StepOver" Grid.Row="6" Grid.Column="4" Content="⏭"       Click="StepOver_OnClick"/>
+                    <Button x:Name="ForwStop" Grid.Row="6" Grid.Column="5" Content="❎"       Click="ForwStop_OnClick"/>
+                    <Button x:Name="Mute"     Grid.Row="6" Grid.Column="6" Content="📣" Grid.ColumnSpan="2"      Click="Mute_OnClick" FontSize="22" MouseEnter="Mute_MouseEnter"/>
+                    <TextBlock x:Name="TimerTxt" Grid.Row="4" Foreground="White" HorizontalAlignment="Left" Grid.Column="0"  TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="textBlock1" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Left" Height="1" Margin="27.667,45.667,-28.333,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="162"/>
+                    <Slider x:Name="BalanceSlider" Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Stretch"  VerticalAlignment="Top" Grid.RowSpan="2" Value="0" Minimum="-1" Maximum="1" ValueChanged="BalanceSlider_ValueChanged" Visibility="Visible" Background="Transparent" />
+                    <Slider x:Name="VolumeSlider"  Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="5" HorizontalAlignment="Stretch"   VerticalAlignment="Top" Grid.RowSpan="2" RenderTransformOrigin="0.174,-0.495" Value="0" Minimum="-1" Maximum="1" ValueChanged="VolumeSlider_ValueChanged" Visibility="Visible" Foreground="Transparent" Background="Transparent" />
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Enable Voice Recognition
+                     " HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="170" Margin="-2.333,0,0,0">
+                <Grid Background="#FFE5E5E5"/>
             </TabItem>
 
         </TabControl>

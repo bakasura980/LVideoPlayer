@@ -12,17 +12,30 @@ using System.Windows.Threading;
 using LPlayerWPF.Properties;
 using Application = System.Windows.Application;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Speech.Recognition;
+
 
 namespace LPlayerWPF
 {
+    //Volume message ReWork !!!
 	public partial class MainWindow : Window
 	{
-		private int _currentTheme;
+        private SpeechRecognitionEngine recengine = new SpeechRecognitionEngine();
+        private int _currentTheme;
 		private List<ResourceDictionary> Themes = new List<ResourceDictionary>();
 		private Settings ProgramSettings = new Settings();
 		private DispatcherTimer ShowBtnTimer = new DispatcherTimer();
 		private bool StopSubtitlesBlock = false;
-		
+        private bool isFscroll = false;
+        private Subtitles subtitle = new Subtitles();
+        private VideoTime videotime = new VideoTime();
+
+
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+       
+
 		public MainWindow()
 		{
 			_currentTheme = ProgramSettings.settingsCurrentTheme;
@@ -31,12 +44,18 @@ namespace LPlayerWPF
 
 			UpdateTheme();
 
-			InitializeComponent();
+            dispatcherTimer.Tick += DispatcherTimer_Tick; ;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            
+
+            InitializeComponent();
 
 			this.KeyDown += KeyEventHandler;
 		}
 
-		private void KeyEventHandler(object sender, KeyEventArgs e)
+        
+
+        private void KeyEventHandler(object sender, KeyEventArgs e)
 		{
 			//MessageBox.Show("Key: " + e.Key + " !");
 
@@ -59,27 +78,18 @@ namespace LPlayerWPF
 			}
 			if ( e.Key == Key.Up || e.Key == Key.W) // Volume ++
 			{
-				if ( Video.Volume >= 90 )
-				{
-					Video.Volume = 100;
-				}
-				else Video.Volume += 10;
-				Notify("Volume has been increased to " + Video.Volume);
+                BalanceSlider.Value += 0.1;
+				Notify("Volume has been increased to " + Video.Volume*100 );
 			}
 			if ( e.Key == Key.Down || e.Key == Key.S ) // Volume --
 			{
-				if (Video.Volume <= 10)
-				{
-					Video.Volume = 0;
-				}else Video.Volume -= 10;
-
-				Notify( "Volume has been decreased to " + Video.Volume );
+                BalanceSlider.Value -= 0.1;
+				Notify( "Volume has been decreased to " + Video.Volume*100 );
 			}
 			if ( e.Key == Key.Space || e.Key == Key.Enter ) // <- and A step back
 			{
 				this.Start_OnClick( sender, e );
 			}
-
 		}
 
 		private void ChangeTheme_OnClick(object sender, RoutedEventArgs e)
@@ -105,8 +115,10 @@ namespace LPlayerWPF
 		private async void Notify(string notification)
 		{
 			if (NotificationBlock == null) return;
+            StopSubtitlesBlock = true;
 
-			NotificationBlock.Text = notification;
+            NotificationBlock.Text = notification;
+            StopSubtitlesBlock = false;
 			try
 			{
 				await Task.Delay(3000, new CancellationToken( StopSubtitlesBlock ) ); // if 'StopSubtitlesBlock' is true will stop process
@@ -155,7 +167,8 @@ namespace LPlayerWPF
 				{
 					Notify("10 seconds step over");
 					Video.Position += TimeSpan.FromSeconds(10);
-				}
+                    isFscroll = true;
+                }
 				else
 				{
 					Notify("Restarted");
@@ -199,26 +212,26 @@ namespace LPlayerWPF
 					break;
 			}
 		}
-
-		private void StepBack_OnClick(object sender, RoutedEventArgs e)
-		{
-			if (Video.HasVideo || Video.HasAudio) // if havent media-> doesnt throw exeption
-				//Problem when have nothing at MediaElement and press this key is fixed	
-				{
-					if (Video.Position.TotalSeconds < Video.NaturalDuration.TimeSpan.TotalSeconds - 10)
-					{
-						Video.Position -= TimeSpan.FromSeconds(10);
-						Notify("10 seconds step back");
-					}
-					else
-					{
-						Video.Stop();
-						Video.Play();
-						Notify("Restarted");
-					}
-				}
-			
-		}
+        //Play next video from the list<string>();
+        private void StepBack_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Video.HasVideo || Video.HasAudio) // if havent media-> doesnt throw exeption
+                                                  //Problem when have nothing at MediaElement and press this key is fixed	
+            {
+                if (Video.Position.TotalSeconds < Video.NaturalDuration.TimeSpan.TotalSeconds - 10)
+                {
+                    isFscroll = true;
+                    Video.Position -= TimeSpan.FromSeconds(10);
+                    Notify("10 seconds step back");
+                }
+                else
+                {
+                    Video.Stop();
+                    Video.Play();
+                    Notify("Restarted");
+                }
+            }
+        }
 
 		private void Pause_OnClick(object sender, RoutedEventArgs e)
 		{
@@ -240,17 +253,77 @@ namespace LPlayerWPF
 			
 		}
 
+        private static List<Subtitles> subs = new List<Subtitles>();
+        private static bool subsbtnclicked;
+
 		private void SubsShortcut_OnClick(object sender, RoutedEventArgs e)
 		{
-			
+            if (subs != null)
+            {
+                subs.Clear();
+            }
+            var openfiledialog = new Microsoft.Win32.OpenFileDialog();
+            if (openfiledialog.ShowDialog() == true)
+            {
+                subsbtnclicked = true;
+                subs = Subtitles.GetSubs(openfiledialog.FileName);
+            }
 		}
 
-		private void PlayList_OnClick(object sender, RoutedEventArgs e)
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (subsbtnclicked)
+            {
+                SubtitlesText.Text = subtitle.PrintSubs(subs, Video.Position.Seconds, Video.Position.Minutes,
+                    Video.Position.Hours, isFscroll);
+                isFscroll = false;
+            }
+            TimerTxt.Text = videotime.PrintTime(Video.Position.Seconds, Video.Position.Minutes, Video.Position.Hours);
+        }
+
+
+        private PlayList playlistwindow = new PlayList();
+        private PlayListVideosList playlist = new PlayListVideosList();
+
+        private void PlayList_OnClick(object sender, RoutedEventArgs e)
 		{
-			
-		}
+            if (playlistwindow.IsOpen == true)
+            {
+                MessageBox.Show("This Form is already opened");
+            }
+            else
+            {
+                playlistwindow = new PlayList();
+                playlistwindow.IsOpen = true;
+                playlistwindow.FormClosed += Playlistwindow_FormClosed;
+                playlistwindow.Show();
+                this.WindowState = WindowState.Minimized;
+            }
+        }
+        
+        private void Playlistwindow_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        {
+            this.WindowState = WindowState.Normal;
+            BinaryFormatter formatter = new BinaryFormatter();
+            if (playlistwindow.CurrentStream.Length > 0)
+            {
+                using (playlistwindow.CurrentStream)
+                {
+                    playlist = (PlayListVideosList)formatter.Deserialize(playlistwindow.CurrentStream);
+                }
+            }
+            if (playlist.ListOfVideos.Count > 0)
+            {
+                foreach (var item in playlist.ListOfVideos)
+                {
+                    Video.Source = new Uri(item);
+                    break;
+                }
+                Video.Play();
+            }
+        }
 
-		private void Mute_OnClick(object sender, RoutedEventArgs e)
+        private void Mute_OnClick(object sender, RoutedEventArgs e)
 		{
 			if (Video.HasAudio) // ESCAPE EXEPTION WHEN HAVENT VIDEO/MUSIC
 			{
@@ -285,6 +358,7 @@ namespace LPlayerWPF
 
 		void timer_HideBtn(object sender, EventArgs e)
 		{
+
 			Home.Visibility		= Visibility.Hidden;
 			PlayList.Visibility	= Visibility.Hidden;
 			SubSrtct.Visibility = Visibility.Hidden;
@@ -295,12 +369,13 @@ namespace LPlayerWPF
 			StepOver.Visibility	= Visibility.Hidden;
 			StepBack.Visibility	= Visibility.Hidden;
 			MenuShow.Visibility	= Visibility.Hidden;
-			none.Visibility		= Visibility.Hidden;
+			OpenBtn.Visibility		= Visibility.Hidden;
 			none1.Visibility	= Visibility.Hidden;
 			none2.Visibility	= Visibility.Hidden;
 			SavePhot.Visibility	= Visibility.Hidden;
-			none4.Visibility	= Visibility.Hidden;
 			Mute.Visibility		= Visibility.Hidden;
+            BalanceSlider.Visibility = Visibility.Hidden;
+            VolumeSlider.Visibility = Visibility.Hidden;
 
 			Mouse.OverrideCursor	= Cursors.None;
 		}
@@ -317,11 +392,10 @@ namespace LPlayerWPF
 			StepOver.Visibility	= Visibility.Visible;
 			StepBack.Visibility	= Visibility.Visible;
 			MenuShow.Visibility	= Visibility.Visible;
-			none.Visibility		= Visibility.Visible;
+			OpenBtn.Visibility		= Visibility.Visible;
 			none1.Visibility	= Visibility.Visible;
 			none2.Visibility	= Visibility.Visible;
 			SavePhot.Visibility = Visibility.Visible;
-			none4.Visibility	= Visibility.Visible;
 			Mute.Visibility		= Visibility.Visible;
 
 			Mouse.OverrideCursor	= Cursors.Arrow;
@@ -339,12 +413,106 @@ namespace LPlayerWPF
 
 		private void None4_OnClick(object sender, RoutedEventArgs e)
 		{
-			// test method 
-			if (Video.Source.ToString().Contains("mp3"))
-			{
-				Video.Source = new Uri( "C:\\Users\\Bobo-PC\\Desktop\\GOT_Best_Scene.mp4" );
-			}
-			else Video.Source = new Uri("C:\\Users\\Bobo-PC\\Downloads\\MahmutOrhan-Feelfeat.SenaSener(Official Video).mp3");
 		}
-	}
+
+        private void OpenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var open = new Microsoft.Win32.OpenFileDialog();
+            if (open.ShowDialog() == true)
+            {
+                Video.Source = new Uri(open.FileName);
+                Video.Play();
+                dispatcherTimer.Start();
+            }
+        }
+
+        private void none4_MouseEnter(object sender, MouseEventArgs e)
+        {
+            
+        }
+        //Buffer trying !!!
+        private void BalanceSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Video.Balance = e.NewValue + 1;
+        }
+
+        private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Video.Volume = e.NewValue + 1;
+        }
+
+        private void SetRecognizer()
+        {
+            Choices choices = new Choices();
+            choices.Add(new string[] { "Begin", "Play", "Stop", "Pause", "Mute", "Scroll forward", "Scroll back",
+                "Sroll backward" ,  "Playlist", "Choose", "Subs", "Subtitles", "Continue"});
+
+            GrammarBuilder grbuilder = new GrammarBuilder();
+            grbuilder.Append(choices);
+
+            Grammar grammar = new Grammar(grbuilder);
+            recengine.LoadGrammarAsync(grammar);
+
+            recengine.SpeechRecognized += Recengine_SpeechRecognized;
+            recengine.SetInputToDefaultAudioDevice();
+            recengine.RecognizeAsync(RecognizeMode.Multiple);
+        }
+
+        private void Recengine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            switch (e.Result.Text)
+            {
+                case "Scroll backward":
+                    StepBack_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Mute":
+                    Mute_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Continue":
+                    Start_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Play":
+                    Start_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Begin":
+                    Start_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Stop":
+                    Pause_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Pause":
+                    Pause_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Scroll forward":
+                    StepOver_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Scroll back":
+                    StepBack_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Playlist":
+                    PlayList_OnClick(this, new RoutedEventArgs());
+                    break;
+                case "Choose":
+                    OpenBtn_Click(this, new RoutedEventArgs());
+                    break;
+                case "Subs":
+                case "Subtitles":
+                    SubsShortcut_OnClick(this, new RoutedEventArgs());
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetRecognizer();
+        }
+
+        private void Mute_MouseEnter(object sender, MouseEventArgs e)
+        {
+            VolumeSlider.Visibility = Visibility.Visible;
+            BalanceSlider.Visibility = Visibility.Visible;
+        }
+    }
 }

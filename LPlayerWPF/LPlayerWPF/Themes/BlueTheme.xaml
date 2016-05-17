@@ -14,7 +14,9 @@
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="BorderBrush" Value="Goldenrod"/>
     </Style>
-
+    <Style TargetType="Slider" >
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
     <Style TargetType="MediaElement">
 
         <!--<Setter Property="Source" Value=""/>-->
